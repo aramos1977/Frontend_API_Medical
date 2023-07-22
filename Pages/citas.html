@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Citas Médicas</title>
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
+</head>
+<body>
+  <header><a class="button" href="index.html"class="nav-link">HOME</a></header>
+
+  <h1 class="titulo">Sistema de Citas Médicas</h1>
+
+  <div class="container">
+    <h2>Control de Citas Médicas</h2>
+    <br>
+    <form id="citaForm">
+      <label for="nombre">Nombre del paciente:</label>
+      <input class="nomb" type="text" id="nombre" required>
+
+      <label for="fecha">Fecha de la cita:</label>
+      <input class="nomb" type="date" id="fecha" required>
+
+      <label for="hora">Hora de la cita:</label>
+      <input class="nomb" type="time" id="hora" required>
+
+      <label for="medico">Médico:</label>
+      <select id="medico" required>
+        <option value="">Seleccione un médico</option>
+        <option value="Camilo Duran">Doctor Camilo Duran</option>
+        <option value="Juan Liscano">Doctor Juan Liscano</option>
+        <option value="Keiros Rojas">Doctor Keiros Rojas</option>
+        <option value="Camila Diam">Doctora Camila Diam</option>
+        <option value="Jesica Pavon">Doctora Jesica Pavon</option>
+        <option value="Kira Ramirez">Doctora Kira Ramirez</option>
+      </select>
+
+      <label for="especialidad">Especialidad:</label>
+      <select id="especialidad" required>
+        <option value="">Seleccione una especialidad</option>
+        <option value="Odontologia">Especialidad Odontología</option>
+        <option value="Medicina General">Especialidad Medicina General</option>
+        <option value="Cardiología">Especialidad Cardiología</option>
+        <option value="Dermatología">Especialidad Dermatología</option>
+        <option value="Rehabilitación física">Especialidad Rehabilitación física</option>
+        <option value="Psicología">Especialidad Psicología</option>
+        <option value="Medicina interna">Especialidad Medicina interna</option>
+        <option value="Radiología">Especialidad Radiología</option>
+        <option value="Urología">Especialidad Urología</option>
+      </select>
+
+      <label for="consultorio">Consultorio:</label>
+      <select id="consultorio" required>
+        <option value="">Seleccione un consultorio</option>
+        <option value="Clinica Norte - Consultorio 201">Consultorio 201 - Clínica Norte</option>
+        <option value="Clinica Sur - Consultorio 202">Consultorio 202 - Clínica Sur</option>
+        <option value="Clinica Americas - Consultorio 203">Consultorio 203 - Clínica Americas</option>
+        <option value="Clinica Soacha - Consultorio 204">Consultorio 204 - Clínica Soacha</option>
+        <option value="Clinica Kenedi - Consultorio 205">Consultorio 205 - Clínica Kenedi</option>
+        <option value="Clinica Paloquemado - Consultorio 206">Consultorio 206 - Clínica Paloquemado</option>
+        <option value="Clinica Chapinero - Consultorio 207">Consultorio 207 - Clínica Chapinero</option>
+        <option value="Clinica Chico - Consultorio 208">Consultorio 208 - Clínica Chico</option>
+        <option value="Clinica Suba - Consultorio 209">Consultorio 209 - Clínica Suba</option>
+        <option value="Clinica Puente Aranda - Consultorio 210">Consultorio 210 - Clínica Puente Aranda</option>
+      </select>
+      <br>
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+
+  <div class="container_citas">
+    <h2 class="titulo">Listado de Citas</h2>
+    <table id="citasTable">
+      <br>
+      <thead>
+        <tr>
+          <th>Nombre del paciente</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Médico</th>
+          <th>Especialidad</th>
+          <th>Consultorio</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Agrega este código para el boton de editar -->
+
+<div id="modalEditar" class="modal">
+  <div class="modal-content">
+    <h2>Editar Cita Médica</h2>
+    <form id="editarCitaForm">
+      <input type="hidden" id="editarCitaId">
+
+      <label for="editarNombre">Nombre del paciente:</label>
+      <input type="text" id="editarNombre" required>
+
+      <label for="editarFecha">Fecha de la cita:</label>
+      <input type="date" id="editarFecha" required>
+      
+      <label for="editarHora">Hora de la cita:</label>
+      <input type="time" id="editarHora" required>
+      
+      <label for="editarMedico">Médico:</label>
+      <select id="editarMedico" required>
+        <option value="">Seleccione un médico</option>
+        <option value="Camilo Duran">Doctor Camilo Duran</option>
+        <option value="Juan Liscano">Doctor Juan Liscano</option>
+        <option value="Keiros Rojas">Doctor Keiros Rojas</option>
+        <option value="Camila Diam">Doctora Camila Diam</option>
+        <option value="Jesica Pavon">Doctora Jesica Pavon</option>
+        <option value="Kira Ramirez">Doctora Kira Ramirez</option>
+      </select>
+      
+      <label for="editarEspecialidad">Especialidad:</label>
+      <select id="editarEspecialidad" required>
+        <option value="">Seleccione una especialidad</option>
+        <option value="Odontologia">Especialidad Odontología</option>
+        <option value="Medicina General">Especialidad Medicina General</option>
+        <option value="Cardiología">Especialidad Cardiología</option>
+        <option value="Dermatología">Especialidad Dermatología</option>
+        <option value="Rehabilitación física">Especialidad Rehabilitación física</option>
+        <option value="Psicología">Especialidad Psicología</option>
+        <option value="Medicina interna">Especialidad Medicina interna</option>
+        <option value="Radiología">Especialidad Radiología</option>
+        <option value="Urología">Especialidad Urología</option>
+      </select>
+      
+      <label for="editarConsultorio">Consultorio:</label>
+      <select id="editarConsultorio" required>
+        <option value="">Seleccione un consultorio</option>
+        <option value="Clinica Norte - Consultorio 201">Consultorio 201 - Clínica Norte</option>
+        <option value="Clinica Sur - Consultorio 202">Consultorio 202 - Clínica Sur</option>
+        <option value="Clinica Americas - Consultorio 203">Consultorio 203 - Clínica Americas</option>
+        <option value="Clinica Soacha - Consultorio 204">Consultorio 204 - Clínica Soacha</option>
+        <option value="Clinica Kenedi - Consultorio 205">Consultorio 205 - Clínica Kenedi</option>
+        <option value="Clinica Paloquemado - Consultorio 206">Consultorio 206 - Clínica Paloquemado</option>
+        <option value="Clinica Chapinero - Consultorio 207">Consultorio 207 - Clínica Chapinero</option>
+        <option value="Clinica Chico - Consultorio 208">Consultorio 208 - Clínica Chico</option>
+        <option value="Clinica Suba - Consultorio 209">Consultorio 209 - Clínica Suba</option>
+        <option value="Clinica Puente Aranda - Consultorio 210">Consultorio 210 - Clínica Puente Aranda</option>
+      </select>
+
+      <div class="modal-buttons">
+        <button type="button" class="cancelar">Cancelar</button>
+        <button type="submit">Guardar cambios</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  <script src="./js/script.js"></script>
+  <script src="./js/listarCita.js"></script>
+  <script src="./js/CrearCita.js"></script>
+  <script src="./js/CitaAPI.js"></script>
+</body>
+</html>
+
